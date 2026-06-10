@@ -177,9 +177,14 @@ def plot_distance_vs_capacity(df, out_dir):
     # Linear regression line (numpy)
     m, b = np.polyfit(df["distance_km"], df["capacity"], 1)
     x_line = np.linspace(df["distance_km"].min(), df["distance_km"].max(), 200)
+    
+    # Calculate correlations
+    pearson_r = df["distance_km"].corr(df["capacity"], method="pearson")
+    spearman_rho = df["distance_km"].corr(df["capacity"], method="spearman")
+    
     ax.plot(x_line, m * x_line + b,
             color="black", linewidth=1.8, linestyle="--",
-            label=f"Trend  (slope={m:.2f} docks/km)")
+            label=f"Trend (slope={m:.2f})\nPearson r = {pearson_r:.2f}\nSpearman ρ = {spearman_rho:.2f}")
 
     ax.axvline(RADIUS_KM, color="grey", linewidth=1, linestyle=":",
                label=f"{RADIUS_KM} km boundary")
