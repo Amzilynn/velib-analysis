@@ -222,7 +222,7 @@ spearman_rho = df_grouped["distance_km"].corr(df_grouped["capacity"], method="sp
 
 ax.plot(x_line, m * x_line + b,
         color="black", linewidth=1.8, linestyle="--",
-        label=f"Trend (slope={m:.2f})\nPearson r = {pearson_r:.2f}\nSpearman ρ = {spearman_rho:.2f}")
+        label=f"Trend (slope={m:.2f})\\nPearson r = {pearson_r:.2f}\\nSpearman ρ = {spearman_rho:.2f}")
 
 ax.axvline(RADIUS_KM, color="grey", linewidth=1, linestyle=":",
            label=f"{RADIUS_KM} km boundary")
